@@ -36,5 +36,7 @@ def run():
 
 
 if __name__ == '__main__':
-    t01 = threading.Thread(target=run)
-    t01.start()
+    # t01 = threading.Thread(target=run)
+    # t01.start()
+    data = {i: i**2 for i in range(1, 9)}
+    print(data)
