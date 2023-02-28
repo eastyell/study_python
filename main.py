@@ -55,3 +55,18 @@ if __name__ == '__main__':
     a = ['苏州', '中国', '哈哈', '', '日本', '', '英国']
     res = list(map(lambda x: '无数据' if x == '' else x, a))
     print(res)
+
+
+    def my_decorator(func):
+        def wrapper():
+            print("Something is happening before the function is called.")
+            func()
+            print("Something is happening after the function is called.")
+
+        return wrapper
+
+    @my_decorator
+    def say_whee():
+        print("Whee!")
+
+say_whee()
