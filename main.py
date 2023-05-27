@@ -60,20 +60,20 @@ if __name__ == '__main__':
     print('去除重复字符并排序:', res)
 
 
-# 根据字典建排序
+    # 根据字典建排序
     dict = {'chinese': 80, 'maths': 88, 'english': 78, 'history': 92}
     print('4，old dict:', dict)
     lists = sorted(dict.items(), key=lambda i: i[1], reverse=False)
     print('sorted根据成绩排序：', lists)
 
-# map函数
+    # map函数
     area = ['苏州', '中国', '哈哈', '', '日本', '', '英国']
     print('5，原始数据：', area)
     res = list(map(lambda x: '无数据' if x == '' else x, area))
     print('填充数据：', res)
 
 
-#  装饰器
+    #  装饰器
     def my_decorator(func):
         def wrapper():
             print("Something is happening before the function is called.")
@@ -84,6 +84,7 @@ if __name__ == '__main__':
 
 
     print('6，装饰器')
+
 
     @my_decorator
     def say_whee():
@@ -97,9 +98,9 @@ num = 216
 result = '偶数' if int(num) % 2 == 0 else '奇数'
 print('7，这个数字是：', result)
 
-
 # 随机函数
-import random, string
+import random
+import string
 
 str1 = string.ascii_letters
 str2 = string.digits
