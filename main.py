@@ -22,10 +22,9 @@ def main():
     cat01.run()
 
 
-# Press the green button in the gutter to run the script.
+# Press the green button in the gutt.er to run the script.
 if __name__ == '__main__':
     main()
-
 
 # 每隔一秒启动线程
 import datetime
@@ -100,16 +99,16 @@ class MyDecorator(object):
     def __call__(self, *args, **kwargs):
         # 对已有参数进行封装
         print('--正在进行类装饰-----')
-        self.__func()
+        self.__func(*args)
 
 
 @MyDecorator
-def show():
-    print("hello")
+def show(name):
+    print("hello:", name)
 
 
 # 指向MyDecorator类创建实例对象--> show()==> 对象（）
-show()
+show('Leo')
 
 # 闭包
 def func_out(num1):
@@ -127,12 +126,16 @@ num = 216
 result = '偶数' if int(num) % 2 == 0 else '奇数'
 print('7，这个数字', num, '是：', result)
 
+num = list(map(lambda x: '偶数' if int(x) % 2 == 0 else '奇数', range(1, 11)))
+# dict_value = dict((i, '偶数' if i % 2 == 0 else '奇数') for i in range(10))
+print(num)
+
 # 随机函数
 import random
 import string
 
-str1 = string.ascii_letters
-str2 = string.digits
+str1 = string.ascii_letters  # 英文
+str2 = string.digits  # 数字
 str3 = str1 + str2
 print('8，随机英文和数字：', str3)
 
@@ -140,8 +143,16 @@ str_a = ''
 for i in range(6):
     str_a += random.choice(str3)
 
-print('随机生成6位字符：', str_a)
+print('9.随机生成6位字符：', str_a)
 
-b = random.sample(str3, 6)
+
+# 从序列中随机选择的k个元素，并且这些元素是不重复的。
+b = random.sample(str3, 20)
 str_b = ''.join(b)
 print('随机生成6位字符：', str_b)
+
+# 从序列中随机选择的k个元素,某些元素可能会被选择多次。
+b = random.choices(str3, k=20)
+str_b = ''.join(b)
+print('随机生成20位字符：', str_b)
+
