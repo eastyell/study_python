@@ -29,23 +29,41 @@ Task result store用来存储Worker执行的任务的结果，Celery支持以不
 ### celery简单使用流程：
 
 celery的使用
+
     -pip3 install celery
+
     -写一个py文件：celery_task
+
         -1 指定broker（消息中间件），指定backend（结果存储）
+
         -2 实例化产生一个Celery对象 app=Celery('名字'，broker，backend)
+
         -3 加装饰器绑定任务，在函数（add）上加装饰器app.task
+
         -4 其他程序提交任务,先导入add，add.delay(参，参数)，会将该函数提交到消息中间件，但是并不会执行，有个返回值，直接print会打印出任务的id，以后用id去查询任务是否执行完成
+
         -5 启动worker去执行任务：
+
         linux: celery -A celery_task_s1 worker -l info   
+
         windows下：celery -A celery_task_s1 worker -l info -P eventlet
+
         注：windows系统需要eventlet支持
+
         启动 beat 的命令（负责每隔几秒钟，向任务队列中提交任务）
+       
         celery beat -A celery_task -l info
+
         -6 查看结果：根据id去查询
+
             async = AsyncResult(id="bd600820-9366-4220-a679-3e435ae91e71", app=app)
+
             if async.successful():
+
                 #取出它return的值
+
                 result = async.get()
+
                 print(result)
 ### celery的多任务结构
     -项目结构：
